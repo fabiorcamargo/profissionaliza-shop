@@ -1,31 +1,14 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
 
-    @livewire('nav-custom')
-
-
-
-    <body class="antialiased">
-
-
-
-
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
             rel="stylesheet" />
-
         <!-- Seção 1: Introdução -->
+        
         <section>
             @livewire('product.header', ['product' => $product])
         </section>
         <!-- Fim Seção 1: Introdução -->
-
-
-
-
-
-
-
-
 
         <!-- Seção 2: Recursos -->
         <section class="relative overflow-hidden bg-gray-100 py-12 sm:py-16 lg:py-20" id='details'>
@@ -233,5 +216,5 @@
 
 
 
-    </body>
+
 </div>

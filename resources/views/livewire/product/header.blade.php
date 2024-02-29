@@ -31,10 +31,10 @@
                     <div class="flex items-center">
                         <a href="/"
                             class="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-600 px-6 font-medium tracking-wide text-white shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring">
-                            Adicionar ao Carrinho </a>
-                        <a href="#details" aria-label=""
-                            class="inline-flex items-center font-semibold text-orange-600 transition-colors duration-200 hover:text-orange-400">Saiba
-                            Mais</a>
+                            Comprar </a>
+                        <button wire:click='cartAdd'
+                            class="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-200 px-6 font-medium tracking-wide text-orange-600 shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring">
+                            Adicionar ao Carrinho </button>
                     </div>
                     <div class="space-y-3 pt-8">
                         <ul class="flex flex-col sm:flex-row gap-4">
@@ -42,10 +42,10 @@
                                 <span class="mr-1.5 rounded bg-gray-900 px-2 text-sm font-semibold text-white"> 4.9
                                 </span>
                                 <div class="flex items-center justify-center">
-                                    <x-heroicon-s-star class="h-5 w-5 text-purple-500"/>
-                                    <x-heroicon-s-star class="h-5 w-5 text-purple-500"/>
-                                    <x-heroicon-s-star class="h-5 w-5 text-purple-500"/>
-                                    <x-heroicon-s-star class="h-5 w-5 text-purple-500"/>
+                                    <x-heroicon-s-star class="h-5 w-5 text-orange-600"/>
+                                    <x-heroicon-s-star class="h-5 w-5 text-orange-600"/>
+                                    <x-heroicon-s-star class="h-5 w-5 text-orange-600"/>
+                                    <x-heroicon-s-star class="h-5 w-5 text-orange-600"/>
                                     <x-heroicon-s-star class="h-5 w-5 text-gray-500"/>
 
                                 </div>

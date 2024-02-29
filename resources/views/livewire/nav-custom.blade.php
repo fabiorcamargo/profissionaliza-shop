@@ -1,81 +1,41 @@
-{{-- <div>
-    <header class="relative flex w-screen max-w-screen-xl flex-col overflow-hidden px-4 py-4 text-blue-600 md:mx-auto md:flex-row md:items-center">
-    <a href="#" class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black">
-        <span class="mr-2 w-8">
-          <img src="https://componentland.com/images/JOJj79gp_Djhwdp_ZOKLL.png" alt="" />
-        </span>
-        spline
-      </a>
-      <input type="checkbox" class="peer hidden" id="navbar-open" />
-      <label class="absolute top-5 right-7 cursor-pointer md:hidden" for="navbar-open">
-        <span class="sr-only">Toggle Navigation</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </label>
-      <nav aria-label="Header Navigation" class="peer-checked:mt-8 peer-checked:max-h-56 flex max-h-0 w-full flex-col items-center justify-between overflow-hidden transition-all md:ml-24 md:max-h-full md:flex-row md:items-start">
-        <ul class="flex flex-col items-center space-y-2 md:ml-auto md:flex-row md:space-y-0">
-          <li class="font-bold md:mr-12 transition hover:translate-y-1"><a href="#">Pricing</a></li>
-          <li class="md:mr-12 transition hover:translate-y-1"><a href="#">Features</a></li>
-          <li class="md:mr-12 transition hover:translate-y-1"><a href="#">Support</a></li>
-          <li class="md:mr-12">
-            <button class="rounded-full border-2 border-blue-900 px-6 py-1 text-blue-900 transition-colors hover:bg-blue-500 hover:text-white">Login</button>
-          </li>
-        </ul>
-      </nav>
-    </header>
-</div> --}}
-
-
-<div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
-    <header>
+<div>
+    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
-                <div class="hidden w-full text-gray-600 md:flex md:items-center">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M16.2721 10.2721C16.2721 12.4813 14.4813 14.2721 12.2721 14.2721C10.063 14.2721 8.27214 12.4813 8.27214 10.2721C8.27214 8.06298 10.063 6.27212 12.2721 6.27212C14.4813 6.27212 16.2721 8.06298 16.2721 10.2721ZM14.2721 10.2721C14.2721 11.3767 13.3767 12.2721 12.2721 12.2721C11.1676 12.2721 10.2721 11.3767 10.2721 10.2721C10.2721 9.16755 11.1676 8.27212 12.2721 8.27212C13.3767 8.27212 14.2721 9.16755 14.2721 10.2721Z"
-                            fill="currentColor" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M5.79417 16.5183C2.19424 13.0909 2.05438 7.39409 5.48178 3.79417C8.90918 0.194243 14.6059 0.054383 18.2059 3.48178C21.8058 6.90918 21.9457 12.6059 18.5183 16.2059L12.3124 22.7241L5.79417 16.5183ZM17.0698 14.8268L12.243 19.8965L7.17324 15.0698C4.3733 12.404 4.26452 7.97318 6.93028 5.17324C9.59603 2.3733 14.0268 2.26452 16.8268 4.93028C19.6267 7.59603 19.7355 12.0268 17.0698 14.8268Z"
-                            fill="currentColor" />
-                    </svg>
-                    <span class="mx-1 text-sm">NY</span>
-                </div>
-                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">
+                <div class="w-full text-gray-700 text-2xl font-semibold">
                     Brand
                 </div>
-                <div class="flex items-center justify-end w-full">
-                    <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">
-                        <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                    </button>
+                <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center">
+                    <div class="flex flex-col sm:flex-row">
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/">Início</a>
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contato</a>
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Sobre</a>
+                    </div>
+                </nav>
 
+                <div class="flex items-center justify-end w-full">
+                    <button @click="cartOpen = !cartOpen" type="button"
+                        class="relative inline-flex items-center p-1 mx-4 text-sm font-medium text-center text-gray-500 transition hover:translate-y-2">
+                        <x-heroicon-o-shopping-cart class="w-7 h-7" />
+                            <span class="relative flex h-4 w-4 -top-1 ">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-300 opacity-90"></span>
+                                <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500 opacity-75">
+                                    <span class="absolute inset-0 flex items-center justify-center text-white">{{$sum_cart == 0 ? '' : $sum_cart}}</span>
+                                </span>
+                            </span>
+
+                    </button>
                     <div class="flex sm:hidden">
                         <button @click="isOpen = !isOpen" type="button"
                             class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"
                             aria-label="toggle menu">
-                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
-                                <path fill-rule="evenodd"
-                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
-                                </path>
-                            </svg>
+                            <x-heroicon-m-bars-3-bottom-right class="h-6 w-6 fill-current" />
+
                         </button>
                     </div>
                 </div>
             </div>
-            <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
-                <div class="flex flex-col sm:flex-row">
-                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Início</a>
-                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Categorias</a>
-                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contato</a>
-                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Sobre</a>
-                </div>
-            </nav>
+
             {{-- <div class="relative mt-6 max-w-lg mx-auto">
                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
                     <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
@@ -89,113 +49,6 @@
                     class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
                     type="text" placeholder="Search">
             </div> --}}
+            @livewire('cart')
         </div>
-    </header>
-    <div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'"
-        class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300 z-50">
-        <div class="flex items-center justify-between">
-            <h3 class="text-2xl font-medium text-gray-700">Seu Carrinho</h3>
-            <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none">
-                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-        <hr class="my-3">
-        <div class="flex justify-between mt-6">
-            <div class="flex">
-                <img class="h-20 w-20 object-cover rounded"
-                    src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-                    alt="">
-                <div class="mx-3">
-                    <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-                    <div class="flex items-center mt-2">
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                        <span class="text-gray-700 mx-2">2</span>
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <span class="text-gray-600">20$</span>
-        </div>
-        <div class="flex justify-between mt-6">
-            <div class="flex">
-                <img class="h-20 w-20 object-cover rounded"
-                    src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-                    alt="">
-                <div class="mx-3">
-                    <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-                    <div class="flex items-center mt-2">
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                        <span class="text-gray-700 mx-2">2</span>
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <span class="text-gray-600">20$</span>
-        </div>
-        <div class="flex justify-between mt-6">
-            <div class="flex">
-                <img class="h-20 w-20 object-cover rounded"
-                    src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-                    alt="">
-                <div class="mx-3">
-                    <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-                    <div class="flex items-center mt-2">
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                        <span class="text-gray-700 mx-2">2</span>
-                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <span class="text-gray-600">20$</span>
-        </div>
-        <div class="mt-8">
-            <form class="flex items-center justify-center">
-                <input class="form-input w-48" type="text" placeholder="Add promocode">
-                <button
-                    class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                    <span>Apply</span>
-                </button>
-            </form>
-        </div>
-        <a
-            class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-            <span>Chechout</span>
-            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-        </a>
     </div>

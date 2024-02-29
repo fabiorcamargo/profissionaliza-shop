@@ -1,8 +1,8 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-        <a href="#">
-            <img class="rounded-t-lg" src="product/{{$product->Image->random()->path}}" alt="" />
+        <a href="/product-show/{{$product->id}}">
+            <img class="rounded-t-lg" src="product/{{$product->Image->first()->path}}" alt="" />
         </a>
         <div class="p-5">
             <a href="#">
@@ -23,6 +23,7 @@
                         d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
             </a> --}}
+            
         </div>
     </div>
 </div>
