@@ -16,15 +16,20 @@
                 <div class="flex items-center justify-end w-full">
                     <button @click="cartOpen = !cartOpen" type="button"
                         class="relative inline-flex items-center p-1 mx-4 text-sm font-medium text-center text-gray-500 transition hover:translate-y-2">
-                        <x-heroicon-o-shopping-cart class="w-7 h-7" />
-                            <span class="relative flex h-4 w-4 -top-1 ">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-300 opacity-90"></span>
-                                <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500 opacity-75">
-                                    <span class="absolute inset-0 flex items-center justify-center text-white">{{$sum_cart == 0 ? '' : $sum_cart}}</span>
-                                </span>
+                        <x-heroicon-s-shopping-bag class="w-7 h-7" />
+                        @if($sum_cart == 0 )
+                        @else
+                        <span class="relative">
+                            <span
+                                class="animate-ping absolute top-0 right-0 -mt-1 -mr-1 inline-flex h-4 w-4 rounded-full bg-red-300 opacity-80"></span>
+                            <span
+                                class="absolute top-0 right-0 -mt-1 -mr-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
+                                <span class="relative z-10">{{$sum_cart}}</span>
                             </span>
-
+                        </span>
+                        @endif
                     </button>
+
                     <div class="flex sm:hidden">
                         <button @click="isOpen = !isOpen" type="button"
                             class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"
