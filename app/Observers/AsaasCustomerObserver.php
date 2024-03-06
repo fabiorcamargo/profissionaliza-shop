@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\AsaasDeletedCustomerJob;
 use App\Jobs\AsaasNewCustomerJob;
 use App\Jobs\AsaasUpdateCustomerJob;
 use App\Models\AsaasCustomer;
@@ -29,7 +30,7 @@ class AsaasCustomerObserver
      */
     public function deleted(AsaasCustomer $asaasCustomer): void
     {
-        //
+        dispatch(new AsaasDeletedCustomerJob($asaasCustomer));
     }
 
     /**

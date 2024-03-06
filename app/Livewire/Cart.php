@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Product\Header;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -58,7 +59,13 @@ class Cart extends Component
 
     public function mount(){
         $carrinhoAtual = session()->get('cart', []);
-        $this->carts = $carrinhoAtual;
+        if(Auth::check()){
+            $this->step = 2;
+            $user = auth()->user();
+            $user->cart->exists() ? $this->carts = $user->cart->body : $this->carts = $carrinhoAtual;
+        }else{
+            $this->carts = $carrinhoAtual;
+        }
     }
 
 

@@ -14,12 +14,13 @@ return new class extends Migration
     {
         Schema::create('asaas_customers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreignId('asaas_account_id')->constrained('asaas_accounts');
             $table->string("asaas_customer")->nullable();
             $table->string("name");
             $table->string("email")->unique();
             $table->string("mobilePhone", 20)->nullable();
-            $table->string("cpfCnpj", 18)->unique();
+            $table->string("cpfCnpj", 18);
             $table->string("postalCode", 8)->nullable();
             $table->string("address")->nullable();
             $table->string("addressNumber")->nullable();

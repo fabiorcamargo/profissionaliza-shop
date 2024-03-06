@@ -4,7 +4,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
             rel="stylesheet" />
         <!-- Seção 1: Introdução -->
-        
+
         <section>
             @livewire('product.header', ['product' => $product])
         </section>

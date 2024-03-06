@@ -1,5 +1,9 @@
 <?php
 
+use App\Mail\TestEmail;
+use App\Models\User;
+use App\Models\UserOrder;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +19,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 Route::view('product-show/{id}', 'product-show');
+Route::view('checkout', 'checkout');
+
+Route::get('mail', function(){
+    //dd('s');
+    Mail::to('contato@profissionalizaead.com.br')->send(new TestEmail());
+});
+
+Route::get('test', function(){
+
+    $user = User::where('email', 'fabio.xina@gmail.com')->first();
+    $order = UserOrder::first();
+    
+    dd($order->asaasAccount());
+
+});
 
 
 Route::view('dashboard', 'dashboard')

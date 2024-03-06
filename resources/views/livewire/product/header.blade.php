@@ -10,6 +10,7 @@
                                 class="bg-teal-accent-400 mb-2 inline-block rounded-full py-px text-xs font-semibold uppercase tracking-wider text-indigo-900">
                                 Approved by microssoft</p>
                         </div>
+
                         <h2
                             class="mb-6 max-w-lg text-3xl font-bold tracking-tight text-slate-700 sm:text-5xl sm:leading-snug">
                             {{$product->name}} <br />
@@ -29,7 +30,7 @@
                           </div>
                     </div>
                     <div class="flex items-center">
-                        <a href="/"
+                        <a href="/checkout"
                             class="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-600 px-6 font-medium tracking-wide text-white shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring">
                             Comprar </a>
                         <button wire:click='cartAdd'

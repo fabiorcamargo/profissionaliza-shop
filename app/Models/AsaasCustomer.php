@@ -11,6 +11,8 @@ class AsaasCustomer extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        "user_id",
+        "asaas_account_id",
         "name",
         "email",
         "mobilePhone",
@@ -49,4 +51,5 @@ class AsaasCustomer extends Model
     {
         return $this->belongsTo(AsaasAccount::class);
     }
+
 }

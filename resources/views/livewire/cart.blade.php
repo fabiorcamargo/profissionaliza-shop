@@ -1,5 +1,5 @@
 <div>
-    <div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'"
+    <div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'" id="cart"
         class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300 z-50">
         <div class="flex items-center justify-between">
             <h3 class="text-2xl font-medium text-gray-700">Seu Carrinho</h3>
@@ -61,7 +61,7 @@
                 </button>
             </form>
         </div>
-        <a
+        <a href="/checkout"
             class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
             <span>Chechout</span>
             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

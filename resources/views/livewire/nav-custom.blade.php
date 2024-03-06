@@ -10,8 +10,15 @@
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/">Início</a>
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contato</a>
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Sobre</a>
+                        @if (auth()->user())
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-4 sm:mt-0" href="/client">Conta</a>
+                        @else
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-4 sm:mt-0" href="/client">Login</a>
+                        @endif
+
                     </div>
                 </nav>
+
 
                 <div class="flex items-center justify-end w-full">
                     <button @click="cartOpen = !cartOpen" type="button"
@@ -35,7 +42,6 @@
                             class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"
                             aria-label="toggle menu">
                             <x-heroicon-m-bars-3-bottom-right class="h-6 w-6 fill-current" />
-
                         </button>
                     </div>
                 </div>
@@ -54,6 +60,10 @@
                     class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
                     type="text" placeholder="Search">
             </div> --}}
+
+            
+            @if(request()->path() !== 'checkout')
             @livewire('cart')
+            @endif
         </div>
     </div>
