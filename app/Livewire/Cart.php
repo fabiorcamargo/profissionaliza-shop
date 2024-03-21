@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Controllers\FBController;
 use App\Livewire\Product\Header;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,9 @@ class Cart extends Component
     #[On('cartAdd')]
     public function cartAdd($data)
     {
+
+
+
         $novosItens = $data;
         $carrinhoAtual = session()->get('cart', []);
         foreach ($novosItens as $produtoId => $quantidade) {
@@ -31,6 +35,10 @@ class Cart extends Component
         $this->carts = $carrinhoAtual;
 
         $this->dispatch('cartUp');
+
+        $fb = new FBController;
+        $fb->addCart($data);
+
     }
 
     public function cartRm($data)
@@ -59,10 +67,17 @@ class Cart extends Component
 
     public function mount(){
         $carrinhoAtual = session()->get('cart', []);
+
+        foreach($carrinhoAtual as $key => $value){
+            if(!Product::find($key)){
+                //dd(Product::find($key));
+                return session()->flush();
+            }
+        }
         if(Auth::check()){
             $this->step = 2;
             $user = auth()->user();
-            $user->cart->exists() ? $this->carts = $user->cart->body : $this->carts = $carrinhoAtual;
+            $user->cart ? $this->carts = $user->cart->body : $this->carts = $carrinhoAtual;
         }else{
             $this->carts = $carrinhoAtual;
         }

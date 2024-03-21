@@ -22,9 +22,7 @@ return new class extends Migration
             $table->string("mobilePhone", 20)->nullable();
             $table->string("cpfCnpj", 18);
             $table->string("postalCode", 8)->nullable();
-            $table->string("address")->nullable();
             $table->string("addressNumber")->nullable();
-            $table->string("province")->nullable();
             $table->string("externalReference")->nullable();
             $table->timestamps();
             $table->softDeletes();

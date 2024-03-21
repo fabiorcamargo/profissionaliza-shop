@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-checkout-layout>
     @livewire('checkout-page')
-</x-guest-layout>
+</x-checkout-layout>

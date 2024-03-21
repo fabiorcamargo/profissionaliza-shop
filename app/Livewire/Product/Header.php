@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Product;
 
+use App\Http\Controllers\FBController;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -19,6 +20,8 @@ class Header extends Component
 
     public function render()
     {
-        return view('livewire.product.header');
+        $fb = new FBController;
+
+        return view('livewire.product.header', ['script' => $fb->ViewContent($this->product)]);
     }
 }

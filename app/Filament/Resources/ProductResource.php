@@ -50,7 +50,7 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('product_category_id')
+                Tables\Columns\TextColumn::make('Category.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')

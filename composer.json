@@ -17,7 +17,11 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
-        "mallardduck/blade-boxicons": "^2.4"
+        "mailgun/mailgun-php": "^4.1",
+        "mallardduck/blade-boxicons": "^2.4",
+        "symfony/http-client": "^7.0",
+        "symfony/mailgun-mailer": "^7.0",
+        "facebook/php-business-sdk": "^8.0.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

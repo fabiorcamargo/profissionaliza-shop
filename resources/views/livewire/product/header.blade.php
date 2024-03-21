@@ -19,8 +19,8 @@
 
                         <div class="py-8">
                             <div class="flex">
-                              <p class="text-3xl font-bold text-gray-900">R${{$product->Price->first()->price}}</p>
-                              <del class="ml-2 align-super text-base font-bold text-gray-600"> R${{$product->Price->first()->price}} </del>
+                              <p class="text-3xl font-bold text-gray-900">R${{number_format($product->Price->first()->price, 2, ',', '.')}}</p>
+                              <del class="ml-2 align-super text-base font-bold text-gray-600"> R${{number_format($product->Price->first()->price, 2, ',', '.')}} </del>
                             </div>
 
                             <div class="mt-3 flex items-center text-sm font-medium text-gray-600">
@@ -134,12 +134,16 @@
             </div>
             <!-- /Left Column -->
             <!-- Right Column -->
+
             <div class="flex h-full w-full justify-end">
                 <div class="my-auto flex-col lg:flex">
-                    <img src="/product/{{$product->Image->first()->path}}" alt="" />
+                    <img src="/product/{{$product->Image->first() == null ? 'default.webp' : $product->Image->first()->path}}" alt="" />
                 </div>
             </div>
             <!-- /Right Column -->
         </div>
     </div>
+    @if($script)
+        <script>{!! $script !!}</script>
+    @endif
 </div>

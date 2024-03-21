@@ -11,13 +11,14 @@ class NavCustom extends Component
 
     public $sum_cart;
 
+
     #[On('cartUp')]
     public function atualiza(){
         $carrinhoAtual = session()->get('cart', []);
         $this->sum_cart = array_sum($carrinhoAtual);
         if(Auth::check()){
             $user = auth()->user();
-            if($user->cart->exists()){
+            if(null !== $user->cart){
                 $user->cart->body = $carrinhoAtual;
                 $user->cart->save();
             }

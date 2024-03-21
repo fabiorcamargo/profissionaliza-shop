@@ -8,6 +8,7 @@ use App\Filament\Resources\UserOrderResource\RelationManagers\ProductsRelationMa
 use App\Models\UserOrder;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -24,34 +25,49 @@ class UserOrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('asaas_account_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('billingType_id')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'cpfCnpj')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                // Forms\Components\Select::make('asaas_account_id')
+                //     ->label('Conta do Asaas')
+                //     ->relationship(name: 'Account', titleAttribute: 'name')
+                //     ->required(),
+                Forms\Components\Select::make('billingType_id')
+                    ->label('Forma de Pagamento')
+                    ->relationship(name: 'billingTypes', titleAttribute: 'name')
+                    ->required(),
+                Forms\Components\Select::make('payType')
+                    ->label('Tipo de Pagamento')
+                    ->options([
+                        '1' => 'A Vista',
+                        '2' => 'Parcelado'
+                    ])
+                    ->live(),
                 Forms\Components\TextInput::make('value')
+                    ->label('Valor')
+                    ->visible(fn (Get $get): bool => $get('payType') === '1')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('installmentCount')
+                    ->label('Parcelas')
+                    ->visible(fn (Get $get): bool => $get('payType') === '2')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('installmentValue')
+                    ->label('Valor da Parcela')
+                    ->visible(fn (Get $get): bool => $get('payType') === '2')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('dueDate')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\DatePicker::make('dueDate')
+                    ->label('Data de Vencimento')
+                    ->required(),
                 Forms\Components\TextInput::make('postalCode')
+                    ->label('CEP')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('addressNumber')
+                    ->label('Número da Residência')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('status')
-                    ->maxLength(255),
+                    ->maxLength(255)
             ]);
     }
 
@@ -59,13 +75,19 @@ class UserOrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
+                // Tables\Columns\TextColumn::make('user_id')
+                //     ->numeric()
+                //     ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('asaas_account_id')
+                Tables\Columns\TextColumn::make('user.cpfCnpj')
+                    ->label('Documento')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('Account.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('billingType_id')
+                Tables\Columns\TextColumn::make('billingTypes.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('value')
                     ->searchable(),

@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class ProductItemResource extends Resource
 {
@@ -24,15 +25,19 @@ class ProductItemResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('product_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('product_id')
+                    ->relationship('Product', 'name')
+                    ->required(),
                 Forms\Components\Select::make('product_item_type_id')
                     ->label('Tipo')
                     ->options(
                         ProductItemType::pluck('name', 'id')->toArray()
                     )
                     ->required(),
+                Forms\Components\TextInput::make('icon')
+                ->hint(new HtmlString('<a href="https://blade-ui-kit.com/blade-icons?set=1" target="_blank">Somente ícones Heroicons</a>'))
+                ->placeholder('x-heroicon-o-video-camera')
+                ->hintIcon('heroicon-s-arrow-top-right-on-square'),
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),

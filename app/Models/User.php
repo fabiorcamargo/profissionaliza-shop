@@ -63,6 +63,13 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
+    protected $appends = ['identify'];
+
+    public function getIdentifyAttribute()
+    {
+        return "{$this->cpfCnpj}|{$this->name}";
+    }
+
     protected static function boot()
     {
         parent::boot();

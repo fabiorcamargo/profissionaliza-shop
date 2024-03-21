@@ -21,9 +21,10 @@
             $product = App\Models\Product::find($key);
         @endphp
 
+
         <div class="flex justify-between mt-6">
             <div class="flex">
-                <img class="h-20 w-20 object-cover rounded" src="/product/{{$product->Image->first()->path}}"
+                <img class="h-20 w-20 object-cover rounded" src="/product/{{(!$product->Image()->exists()) ? 'default.webp' : $product->Image->first()->path}}"
                     alt="">
                 <div class="mx-3">
                     <h3 class="text-sm text-gray-600">{{$product->name}}</h3>

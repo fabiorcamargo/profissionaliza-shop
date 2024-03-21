@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('payment_id')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('asaas_account_id')->nullable()->constrained('asaas_accounts');
             $table->string('billingType_id')->constrained('billing_types');
@@ -22,7 +23,9 @@ return new class extends Migration
             $table->string('dueDate');
             $table->string('postalCode');
             $table->string('addressNumber');
-            $table->string('description');
+            $table->string('description')->nullable();
+            $table->json('pay')->nullable();
+            $table->json('response')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Jobs\UserOrderCreateJob;
 use App\Models\UserOrder;
+use Livewire\Livewire;
 
 class UserOrderObserver
 {
@@ -11,8 +13,12 @@ class UserOrderObserver
      */
     public function created(UserOrder $userOrder): void
     {
-        $userOrder->asaas_account_id = $userOrder->asaasAccount()->id;
+
+        $userOrder->asaas_account_id = $userOrder->user->AsaasCustomer->asaas_account_id;
         $userOrder->save();
+
+        dispatch(new UserOrderCreateJob($userOrder));
+
     }
 
     /**
