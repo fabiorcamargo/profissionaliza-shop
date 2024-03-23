@@ -14,17 +14,31 @@ class DatabaseSeeder extends Seeder
     {
         //\App\Models\User::factory(10)->create();
 
+        /*
+
+        No arquivo .env ensira as variáveis
+        ASAAS_NAME='NOME'
+        ASAAS_TOKEN='TOKEN'
+
+        ADM_NAME='NOME'
+        ADM_MAIL='EMAIL'
+        ADM_CPF='CPF'
+        ADM_PHONE='TELEFONE'
+        ADM_PW='SENHA'
+
+        */
+
         \App\Models\AsaasAccount::create([
             'name' => env('ASAAS_NAME'),
             'token' => env('ASAAS_TOKEN'),
         ]);
 
         \App\Models\User::create([
-            'name' => 'Fábio Camargo',
-            'email' => 'fabiorcamargo@gmail.com',
-            'cpfCnpj' => '05348908908',
-            'phone' => '42991622889',
-            'password' => bcrypt('Quem@ma764829')
+            'name' => env('ADM_NAME'),
+            'email' => env('ADM_MAIL'),
+            'cpfCnpj' => env('ADM_CPF'),
+            'phone' => env('ADM_PHONE'),
+            'password' => bcrypt(env('ADM_PW'))
         ]);
 
         \App\Models\BillingType::create(['name' => 'BOLETO']);
