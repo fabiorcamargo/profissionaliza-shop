@@ -162,8 +162,9 @@ class CheckoutPay extends Component
     public function getOrder()
     {
 
+        //dd($this->order->user->email);
         if ($this->order->status == "CONFIRMED" || $this->order->status == "RECEIVED") {
-            Mail::to('fabiorcamargo@gmail.com')->send(new PagamentoSucesso($this->order));
+            Mail::to($this->order->user->email)->send(new PagamentoSucesso($this->order));
             $this->statusPay = 2;
             session()->forget('cart');
             $this->dispatch('cartUp');

@@ -12,7 +12,11 @@
             <p class="mb-3 font-normal text-gray-700">{{$product->description}}
             </p>
 
-            <p class="mb-3 font-normal text-gray-700">R${{$product->Price->first() == null ? '' : number_format($product->Price->first()->price, 2, ',', '.')}}
+            <div class="flex">
+                <p class="text-2xl font-bold text-green-600">R${{$product->Price->first() == null ? '' : number_format($product->Price->first()->price, 2, ',', '.')}}</p>
+                <del class="ml-2 align-super text-base font-bold text-red-800"> R${{$product->Price->first() == null ? '' : number_format($product->Price->first()->price * 1.4286 , 2, ',', '.')}} </del>
+              </div>
+            
             </p>
             {{-- <a href="#"
                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">

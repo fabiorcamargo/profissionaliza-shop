@@ -19,8 +19,8 @@
 
                         <div class="py-8">
                             <div class="flex">
-                              <p class="text-3xl font-bold text-gray-900">R${{number_format($product->Price->first()->price, 2, ',', '.')}}</p>
-                              <del class="ml-2 align-super text-base font-bold text-gray-600"> R${{number_format($product->Price->first()->price * 1.4286 , 2, ',', '.')}} </del>
+                              <p class="text-3xl font-bold text-green-600">R${{number_format($product->Price->first()->price, 2, ',', '.')}}</p>
+                              <del class="ml-2 align-super text-base font-bold text-red-800"> R${{number_format($product->Price->first()->price * 1.4286 , 2, ',', '.')}} </del>
                             </div>
 
                             <div class="mt-3 flex items-center text-sm font-medium text-gray-600">
