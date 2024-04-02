@@ -1,7 +1,7 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-        <a @if($product->Price->first() !== null) href="/product-show/{{$product->id}}" @endif >
+        <a @if($product->Price->first() !== null) href="/ps/{{$product->id}}" @endif >
             <img class="rounded-t-lg" src="/product/{{$product->Image->first() == null ? 'default.webp' : $product->Image->first()->path}}" alt="" />
         </a>
         <div class="p-5">

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-Route::view('product-show/{id}', 'product-show');
+Route::view('ps/{id}', 'product-show');
 Route::view('checkout', 'checkout');
 
 Route::get('mail', function(){
