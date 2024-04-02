@@ -3,12 +3,12 @@
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <div class="w-full text-gray-700 text-2xl font-semibold">
-                    Brand
+                    <img class="w-40 " src="/Logo.svg" alt="">
                 </div>
                 <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center">
                     <div class="flex flex-col sm:flex-row">
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/">Início</a>
-                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contato</a>
+                        {{-- <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contato</a> --}}
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Sobre</a>
                         @if (auth()->user())
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-4 sm:mt-0" href="/client">Conta</a>
