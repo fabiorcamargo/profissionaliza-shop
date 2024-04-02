@@ -31,12 +31,18 @@ class AsaasDeletedCustomerJob implements ShouldQueue
          // Obter o token da conta Asaas associada ao cliente
          $token = $this->asaasCustomer->asaasAccount->token;
 
+         if(env('ASAAS_TYPE') == 'DEV'){
+            $url = 'https://sandbox.asaas.com/api/v3/';
+         }else if(env('ASAAS_TYPE') == 'PROD'){
+            $url = 'https://api.asaas.com/v3/';
+         }
+
          try {
              // Fazer uma requisição POST para criar o cliente Asaas
              $response = Http::withHeaders([
                  'Content-Type' => 'application/json',
                  'access_token' => $token,
-             ])->delete('https://sandbox.asaas.com/api/v3/customers/' . $this->asaasCustomer->asaas_customer);
+             ])->delete($url . 'customers/' . $this->asaasCustomer->asaas_customer);
 
              // Verificar se a requisição foi bem-sucedida (código de status 2xx)
              if ($response->successful()) {

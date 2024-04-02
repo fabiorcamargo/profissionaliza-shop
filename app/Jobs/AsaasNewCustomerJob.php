@@ -35,12 +35,18 @@ class AsaasNewCustomerJob implements ShouldQueue
         // Obter os dados do cliente Asaas
         $data = $this->asaasCustomer->toArray();
 
+        if(env('ASAAS_TYPE') == 'DEV'){
+            $url = 'https://sandbox.asaas.com/api/v3/';
+         }else if(env('ASAAS_TYPE') == 'PROD'){
+            $url = 'https://api.asaas.com/v3/';
+         }
+
         try {
             // Fazer uma requisição POST para criar o cliente Asaas
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'access_token' => $token,
-            ])->post('https://sandbox.asaas.com/api/v3/customers', $data);
+            ])->post($url . 'customers/', $data);
 
             // Verificar se a requisição foi bem-sucedida (código de status 2xx)
             if ($response->successful()) {

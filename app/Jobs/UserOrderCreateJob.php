@@ -102,12 +102,18 @@ class UserOrderCreateJob implements ShouldQueue
     public function handle(): void
     {
 
+        if(env('ASAAS_TYPE') == 'DEV'){
+            $url = 'https://sandbox.asaas.com/api/v3/';
+         }else if(env('ASAAS_TYPE') == 'PROD'){
+            $url = 'https://api.asaas.com/v3/';
+         }
+
         try {
             // Fazer uma requisição POST para criar o cliente Asaas
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'access_token' => $this->token,
-            ])->post('https://sandbox.asaas.com/api/v3/payments', $this->data);
+            ])->post($url . 'payments', $this->data);
 
             // Verificar se a requisição foi bem-sucedida (código de status 2xx)
             if ($response->successful()) {
