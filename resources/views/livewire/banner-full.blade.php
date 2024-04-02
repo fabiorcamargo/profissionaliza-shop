@@ -1,6 +1,6 @@
 <div>
     <div class="h-64 rounded-md overflow-hidden bg-cover bg-center"
-        style="background-image: url('feira.jpg')">
+        style="background-image: url('feira.webp')">
         <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
             <div class="px-10 max-w-xl">
                 <h2 class="text-2xl text-white font-semibold">Cursos com acesso ao Portal de Carreiras!</h2>

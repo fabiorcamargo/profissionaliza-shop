@@ -1,7 +1,7 @@
 <div>
     <div class="md:flex mt-8 md:-mx-4">
         <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2"
-            style="background-image: url('https://img.freepik.com/free-photo/group-people-working-out-business-plan-office_1303-15873.jpg?w=1380&t=st=1712064976~exp=1712065576~hmac=e8eaf4cd19f0e226950c0c2114676b5808f0d4d5f6362d760f2f3f1ec3cbf214')">
+            style="background-image: url('preparatorio1.webp')">
             <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                 <div class="px-10 max-w-xl">
                     <h2 class="text-2xl text-white font-semibold">Preparatórios</h2>
