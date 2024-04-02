@@ -54,7 +54,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="Logo.svg" alt="[Nome do Sistema]">
+        <img src="Logo-new.png" alt="[Nome do Sistema]">
         <h2>Confirmação de Pagamento</h2>
     </div>
     <div class="content">
@@ -62,7 +62,7 @@
         <p>Seu pagamento foi confirmado com sucesso! Agradecemos por sua compra.</p>
         <p>Detalhes do Pagamento:</p>
         <ul>
-            <li><strong>Valor Pago:</strong> R$ {{$order->installmentValue}}</li>
+            <li><strong>Valor Pago:</strong> R$ {{$order->value}}</li>
             <li><strong>Data do Pagamento:</strong> {{date('d-m-Y', strtotime($order->dueDate))}}</li>
             <li><strong>Referência de Pagamento:</strong> {{$order->payment_id}}</li>
         </ul>

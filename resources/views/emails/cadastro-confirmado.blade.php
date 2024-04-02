@@ -54,7 +54,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="Logo.svg" alt="[Nome do Sistema]">
+        <img src="Logo-new.png" alt="[Nome do Sistema]">
         <h2>Confirmação de Pagamento</h2>
     </div>
     <div class="content">
