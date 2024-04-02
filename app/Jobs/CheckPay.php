@@ -61,7 +61,7 @@ class CheckPay implements ShouldQueue
                 $content = $response->json();
 
                 
-                if ($content['status'] == 'RECEIVED'){
+                if ($content['status'] == 'RECEIVED' || $content['status'] == "RECEIVED_IN_CASH"){
                     //dd('s');
                     $this->userOrder->response = $content;
                     $this->userOrder->status = 'RECEIVED';
