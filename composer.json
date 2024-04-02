@@ -10,6 +10,8 @@
     "require": {
         "php": "^8.1",
         "aws/aws-sdk-php": "^3.300",
+        "codeat3/blade-google-material-design-icons": "^1.19",
+        "facebook/php-business-sdk": "^8.0.3",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -20,8 +22,7 @@
         "mailgun/mailgun-php": "^4.1",
         "mallardduck/blade-boxicons": "^2.4",
         "symfony/http-client": "^7.0",
-        "symfony/mailgun-mailer": "^7.0",
-        "facebook/php-business-sdk": "^8.0.3"
+        "symfony/mailgun-mailer": "^7.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

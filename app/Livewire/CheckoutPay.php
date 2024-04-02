@@ -3,9 +3,13 @@
 namespace App\Livewire;
 
 use App\Http\Controllers\FBController;
+use App\Jobs\CheckPay;
+use App\Jobs\CheckPix;
+use App\Mail\PagamentoSucesso;
 use App\Models\Product;
 use App\Models\UserOrder;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 
@@ -17,7 +21,7 @@ class CheckoutPay extends Component
     public $postalCode;
     public $validCep = true;
     public $cpfCnpj;
-    public $billingType = 2;
+    public $billingType = 1;
     public $creditCard = [];
     public $creditCardHolderInfo = [];
     public $total;
@@ -28,9 +32,10 @@ class CheckoutPay extends Component
     public function getCep()
     {
 
+        
         //dd($this->carts, $this->billingType, $this->creditCard, $this->creditCardHolderInfo);
-        if ($this->creditCardHolderInfo['postalCode'] !== null && $this->creditCardHolderInfo['postalCode'] !== "") {
-            $response = (Http::get("viacep.com.br/ws/".$this->creditCardHolderInfo['postalCode']."/json"));
+        if (isset($this->creditCardHolderInfo['postalCode']) && $this->creditCardHolderInfo['postalCode'] !== "") {
+            $response = (Http::get("viacep.com.br/ws/" . $this->creditCardHolderInfo['postalCode'] . "/json"));
             $response = json_decode($response->body());
             if (isset($response->erro)) {
                 $this->creditCardHolderInfo['city'] = '';
@@ -51,7 +56,13 @@ class CheckoutPay extends Component
             $this->creditCardHolderInfo['address'] = '';
             $this->creditCardHolderInfo['province'] = '';
         }
+    }
 
+
+    public function setBillingType()
+    {
+
+        //dd($this->billingType);
 
     }
 
@@ -93,32 +104,49 @@ class CheckoutPay extends Component
         $this->dispatch('cartUp');
     }
 
-    public function totalPrice() {
+    public function totalPrice()
+    {
         //dd($this->carts);
         $total = 0;
-        foreach($this->carts as $key => $value){
+        foreach ($this->carts as $key => $value) {
             $product = Product::find($key);
             $total += $product->Price->first()->price * $value;
         }
         return $total;
     }
 
-    public function checkoutEnd(){
+    public function checkoutEnd()
+    {
 
         $user = auth()->user();
-        $this->order = $user->orders()->create([
-            'billingType_id' => $this->billingType,
-            'value' => $this->totalPrice(),
-            'installmentCount' => 1,
-            'installmentValue' => $this->total ,
-            'dueDate' => now()->format('Y-m-d'),
-            'postalCode' => $this->creditCardHolderInfo['postalCode'],
-            'addressNumber' => $this->creditCardHolderInfo['addressNumber'],
-            'description' => 'Teste',
-            'pay' => $this->creditCard
-        ]);
 
-        foreach($this->carts as $key => $value){
+        if ($this->billingType == 1) {
+            //dd('pix');
+
+            $this->order = $user->orders()->create([
+                'billingType_id' => $this->billingType,
+                'value' => $this->totalPrice(),
+                'dueDate' => now()->format('Y-m-d'),
+                'postalCode' => $this->creditCardHolderInfo['postalCode'],
+                'addressNumber' => $this->creditCardHolderInfo['addressNumber'],
+                'description' => 'Teste',
+            ]);
+        } else if ($this->billingType == 2) {
+            //dd('cartão');
+            $this->order = $user->orders()->create([
+                'billingType_id' => $this->billingType,
+                'value' => $this->totalPrice(),
+                'installmentCount' => 1,
+                'installmentValue' => $this->total,
+                'dueDate' => now()->format('Y-m-d'),
+                'postalCode' => $this->creditCardHolderInfo['postalCode'],
+                'addressNumber' => $this->creditCardHolderInfo['addressNumber'],
+                'description' => 'Teste',
+                'pay' => $this->creditCard
+            ]);
+        }
+
+        foreach ($this->carts as $key => $value) {
             $this->order->products()->create([
                 'product_id' => $key,
                 'amount' => $value
@@ -129,25 +157,36 @@ class CheckoutPay extends Component
 
         $fb = new FBController;
         $fb->Purchase($this->order);
-
     }
 
-    public function getOrder(){
+    public function getOrder()
+    {
 
-        if($this->order->status == "CONFIRMED"){
-
+        if ($this->order->status == "CONFIRMED" || $this->order->status == "RECEIVED") {
+            Mail::to('fabiorcamargo@gmail.com')->send(new PagamentoSucesso($this->order));
             $this->statusPay = 2;
             session()->forget('cart');
             $this->dispatch('cartUp');
-        }else{
+        } else if ($this->order->status == "PENDING" && $this->order->billingType_id == 1){
+            dispatch(new CheckPix($this->order));
+        } else if ($this->order->status == "PIX"){
+            $this->statusPay = 'QRCODE';
+            dispatch(new CheckPay($this->order));
+        }
+        
+        else {
 
             $this->statusPay = 3;
         }
     }
 
+    public function checkPay(){
+        dispatch(new CheckPay($this->order));
+    }
+
+
     public function render()
     {
-
         return view('livewire.checkout-pay');
     }
 }

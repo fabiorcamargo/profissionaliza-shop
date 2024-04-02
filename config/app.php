@@ -172,6 +172,7 @@ return [
         App\Providers\Filament\ClientPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\VoltServiceProvider::class,
+ 
     ])->toArray(),
 
     /*

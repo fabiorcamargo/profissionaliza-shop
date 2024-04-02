@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Http\Controllers\FBController;
+use App\Mail\CadastroConfirmado;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\Livewire;
 
@@ -44,6 +46,9 @@ class CheckoutPage extends Component
 
         $fb = new FBController;
         $fb->CompleteRegistration($user);
+
+        Mail::to('fabiorcamargo@gmail.com')->send(new CadastroConfirmado($user, $this->password));
+        
     }
 
 

@@ -24,19 +24,21 @@ class FBController extends Controller
         $this->eventId = (string)Str::uuid();
     }
 
+
     public function fbScript(){
         $event = (string)json_decode($this->data)->data[0]->event_name;
         $custom_data = json_decode($this->data)->data[0]->custom_data;
 
+        //dd($custom_data);
+
         //dd(json_encode(json_decode($this->data)->data[0]));
         $script = "fbq('track', '".$event."',". json_encode(json_decode($this->data)->data[0]) .", {'eventID': '".$this->eventId."'})";
+
+
         $request = new Request;
         //dd($_COOKIE['_fbp']);
 
-
-
-        //dd($script);
-        return $script;
+        return str_replace('event_name', 'event', $script);
     }
 
     public function send()
@@ -56,7 +58,7 @@ class FBController extends Controller
                 throw new \Exception($error_message . ' (' . $response->status() . ')');
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
         }
     }
 
@@ -138,14 +140,15 @@ class FBController extends Controller
           }';
 
         $this->send();
-        return $this->data;
+        return $this->fbScript();
     }
 
 
     public function ViewContent(Product $product)
     {
         $this->seAuth(auth()->user());
-
+        
+        //dd($fbc);
         //dd($this->user_data);
         $this->data = '{
             "data": [
@@ -166,9 +169,6 @@ class FBController extends Controller
             ],
             "test_event_code": "'. env('FB_TESTCODE') . '"
           }';
-
-
-        //dd($this->data);
 
         $this->send();
         return $this->fbScript();
@@ -199,6 +199,17 @@ class FBController extends Controller
         $this->time = time();
         $this->user = $user;
 
+        $request = Request::capture();
+        
+        if($request->cookie('_fbc') !== null){
+          $fbc = $request->cookie('_fbc');
+        }else if($request->input('fbclid') !== null){
+          $fbclid = $request->input('fbclid');
+          $fbc = "fb.2.$this->time.$fbclid";
+        }else{
+          $fbc='';
+        }
+
         $userData = [
             'client_ip_address' => request()->ip(),
             'client_user_agent' => request()->header('User-Agent')
@@ -212,6 +223,8 @@ class FBController extends Controller
         // Adiciona _fbp se estiver disponível
         if (isset($_COOKIE['_fbp'])) {
             $userData['fbp'] = $_COOKIE['_fbp'];
+            $userData['fbc'] = $fbc;
+
         }
 
         $this->user_data = '"user_data": ' . json_encode($userData) . ',';

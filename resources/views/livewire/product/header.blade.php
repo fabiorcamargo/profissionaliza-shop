@@ -30,9 +30,9 @@
                           </div>
                     </div>
                     <div class="flex items-center">
-                        <a href="/checkout"
+                        <button wire:click='checkout'
                             class="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-600 px-6 font-medium tracking-wide text-white shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring">
-                            Comprar </a>
+                            Comprar </button>
                         <button wire:click='cartAdd'
                             class="mr-6 inline-flex h-12 items-center justify-center rounded bg-orange-200 px-6 font-medium tracking-wide text-orange-600 shadow-md outline-none transition duration-200 hover:bg-orange-400 focus:ring">
                             Adicionar ao Carrinho </button>

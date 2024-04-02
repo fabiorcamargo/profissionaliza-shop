@@ -18,6 +18,14 @@ class Header extends Component
         $this->dispatch('cartAdd', [$key => 1]);
     }
 
+    public function checkout()
+    {
+        $key = $this->product->id;
+        $this->dispatch('cartAdd', [$key => 1]);
+
+        return redirect('/checkout');
+    }
+
     public function render()
     {
         $fb = new FBController;

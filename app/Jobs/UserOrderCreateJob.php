@@ -59,7 +59,10 @@ class UserOrderCreateJob implements ShouldQueue
             "externalReference"=> "056984"
         ];
 
-    } elseif($userOrder->billingTypes->name == 'BOLETO')
+    } 
+    
+    elseif($userOrder->billingTypes->name == 'BOLETO')
+
     {
 
         $this->data =[
@@ -69,6 +72,19 @@ class UserOrderCreateJob implements ShouldQueue
                 "value"=>  $userOrder->value,
                 "installmentCount" => $userOrder->installmentCount,
                 "installmentValue" => $userOrder->installmentValue,
+                "description"=> $userOrder->description,
+                "externalReference"=> "056984",
+                "postalService"=> false
+        ];
+    } 
+    
+    elseif($userOrder->billingTypes->name == 'PIX')
+    {
+        $this->data =[
+                "billingType"=> $userOrder->billingTypes->name,
+                "customer"=> $userOrder->user->AsaasCustomer->asaas_customer,
+                "dueDate"=> $userOrder->dueDate,
+                "value"=>  $userOrder->value,
                 "description"=> $userOrder->description,
                 "externalReference"=> "056984",
                 "postalService"=> false

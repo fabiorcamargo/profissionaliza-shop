@@ -1,6 +1,7 @@
 <?php
 
 use App\Jobs\UserOrderCreateJob;
+use App\Mail\CadastroConfirmado;
 use App\Mail\TestEmail;
 use App\Models\BillingType;
 use App\Models\User;
@@ -24,7 +25,20 @@ Route::view('product-show/{id}', 'product-show');
 Route::view('checkout', 'checkout');
 
 Route::get('mail', function(){
-    Mail::to('fabiorcamargo@gmail.com')->send(new TestEmail());
+
+    $user = User::find(2);
+
+    $order = $user->orders()->where('status', 'confirmed')->latest()->first();
+
+    //$user = $order->user;
+
+    //dd($order->payment_id);
+    $dueDate = date('d-m-Y', strtotime($order->dueDate));
+
+    //dd($dueDate);
+
+    return view('emails.pagamento-sucesso', ['user' => $user, 'order' => $order]);
+    //Mail::to('fabiorcamargo@gmail.com')->send(new CadastroConfirmado());
 });
 
 Route::get('test', function(){

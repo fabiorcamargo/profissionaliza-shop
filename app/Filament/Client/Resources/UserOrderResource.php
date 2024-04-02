@@ -72,6 +72,8 @@ class UserOrderResource extends Resource
         return $table
             ->query(UserOrder::where('user_id', auth()->user()->id))
             ->columns([
+                Tables\Columns\TextColumn::make('dueDate')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('payment_id')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user_id')
@@ -87,8 +89,6 @@ class UserOrderResource extends Resource
                 Tables\Columns\TextColumn::make('installmentCount')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('installmentValue')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('dueDate')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('postalCode')
                     ->searchable(),
