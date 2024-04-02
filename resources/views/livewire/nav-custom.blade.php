@@ -3,7 +3,9 @@
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <div class="w-full text-gray-700 text-2xl font-semibold">
-                    <img class="w-40 " src="/Logo.svg" alt="">
+                    <a href="/">
+                        <img class="w-40 " src="/Logo.svg" alt="">
+                    </a>
                 </div>
                 <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center">
                     <div class="flex flex-col sm:flex-row">
