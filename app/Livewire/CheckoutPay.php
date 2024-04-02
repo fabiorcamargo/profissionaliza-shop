@@ -163,7 +163,7 @@ class CheckoutPay extends Component
     {
 
         //dd($this->order->user->email);
-        if ($this->order->status == "CONFIRMED" || $this->order->status == "RECEIVED") {
+        if ($this->order->status == "CONFIRMED" || $this->order->status == "RECEIVED" || $this->order->status == "RECEIVED_IN_CASH") {
             Mail::to($this->order->user->email)->send(new PagamentoSucesso($this->order));
             $this->statusPay = 2;
             session()->forget('cart');
