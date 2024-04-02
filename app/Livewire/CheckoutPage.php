@@ -30,6 +30,7 @@ class CheckoutPage extends Component
 
     public function createUser()
     {
+
         $user = new User();
         $user = $user->create([
             'name' => $this->name,
@@ -45,9 +46,9 @@ class CheckoutPage extends Component
         $this->loginCheck();
 
         $fb = new FBController;
-        $fb->CompleteRegistration($user);
+        $this->fb_script = $fb->CompleteRegistration($user);
 
-        Mail::to('fabiorcamargo@gmail.com')->send(new CadastroConfirmado($user, $this->password));
+        Mail::to($user->email)->send(new CadastroConfirmado($user, $this->password));
         
     }
 
@@ -82,7 +83,7 @@ class CheckoutPage extends Component
         $carrinhoAtual = session()->get('cart', []);
 
         $fb = new FBController;
-        $fb->InitiateCheckout();
+        $this->fb_script = $fb->InitiateCheckout();
 
         if (Auth::check()) {
             $user = auth()->user();

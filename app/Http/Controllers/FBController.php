@@ -27,7 +27,6 @@ class FBController extends Controller
 
     public function fbScript(){
         $event = (string)json_decode($this->data)->data[0]->event_name;
-        $custom_data = json_decode($this->data)->data[0]->custom_data;
 
         //dd($custom_data);
 
@@ -87,14 +86,16 @@ class FBController extends Controller
                     "content_type": "product"
                 }
               }
-            ],
-            "test_event_code": "'. env('FB_TESTCODE') . '"
+              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
           }';
+
+          
+          
 
         //dd($this->data);
 
         $this->send();
-        return $this->data;
+        return $this->fbScript();
     }
 
     public function InitiateCheckout()
@@ -110,13 +111,14 @@ class FBController extends Controller
                 "event_id":  "' . Str::uuid() . '"
 
               }
-            ],
-            "test_event_code": "'. env('FB_TESTCODE') . '"
+              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
           }';
+
+          //dd($this->data);
 
         $this->send();
 
-        return $this->data;
+        return $this->fbScript();
     }
 
     public function Purchase($data)
@@ -135,8 +137,7 @@ class FBController extends Controller
                     "value": "'.$data->value.'"
                 }
               }
-            ],
-            "test_event_code": "'. env('FB_TESTCODE') . '"
+              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
           }';
 
         $this->send();
@@ -166,9 +167,10 @@ class FBController extends Controller
                     "content_type": "product"
                 }
               }
-            ],
-            "test_event_code": "'. env('FB_TESTCODE') . '"
+            ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
           }';
+
+          
 
         $this->send();
         return $this->fbScript();
@@ -186,11 +188,10 @@ class FBController extends Controller
                 "action_source": "website",
                 "event_id":  "' . Str::uuid() . '"
               }
-            ],
-            "test_event_code": "'. env('FB_TESTCODE') . '"
+              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
           }';
         $this->send();
-        return $this->data;
+        return $this->fbScript();
     }
 
     public function seAuth($user)
