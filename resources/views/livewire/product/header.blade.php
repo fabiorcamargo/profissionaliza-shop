@@ -8,7 +8,7 @@
                         <div>
                             <p
                                 class="bg-teal-accent-400 mb-2 inline-block rounded-full py-px text-xs font-semibold uppercase tracking-wider text-indigo-900">
-                                Approved by microssoft</p>
+                                Approved by customers</p>
                         </div>
 
                         <h2
@@ -20,12 +20,12 @@
                         <div class="py-8">
                             <div class="flex">
                               <p class="text-3xl font-bold text-gray-900">R${{number_format($product->Price->first()->price, 2, ',', '.')}}</p>
-                              <del class="ml-2 align-super text-base font-bold text-gray-600"> R${{number_format($product->Price->first()->price, 2, ',', '.')}} </del>
+                              <del class="ml-2 align-super text-base font-bold text-gray-600"> R${{number_format($product->Price->first()->price * 1.4286 , 2, ',', '.')}} </del>
                             </div>
 
                             <div class="mt-3 flex items-center text-sm font-medium text-gray-600">
                               <x-heroicon-s-tag class="mr-2 block h-4 w-4 align-middle text-gray-500"/>
-                              Economize 50% agora
+                              Economize 30% agora
                             </div>
                           </div>
                     </div>

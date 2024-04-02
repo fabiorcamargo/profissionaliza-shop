@@ -29,7 +29,7 @@
                 <div class="mx-auto mt-20 grid max-w-screen-lg grid-cols-1 gap-x-8 gap-y-12 text-center sm:text-left md:grid-cols-1">
                     <div class="relative flex flex-col items-center justify-center sm:flex-row sm:items-start backdrop-blur-lg rounded-3xl border bg-white/70  py-10 text-left shadow lg:px-12 transition hover:translate-y-2">
                         <x-heroicon-c-hand-thumb-up class="relative m-0 w-16 font-black text-blue-600 mb-5 sm:mr-5 sm:mb-0 sm:text-center"/>
-                        <p class="relative mt-5 text-gray-600 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloremque vel</p>
+                        <p class="relative mt-5 text-gray-600 text-center">Nosso método oferece a oportunidade de adquirir conhecimento de uma maneira prática, objetiva e respeitando seu ritmo, já que oferece ensino individualizado. </p>
                     </div>
                 </div>
 
@@ -91,18 +91,16 @@
                                         </div>
 
                                         <blockquote class="mt-8 flex-1">
-                                            <p class="font-[400] text-xl italic text-blue-900">“Lorem ipsum dolor sit
-                                                amet consectetur adipisicing elit. Animi ducimus repellat aperiam quam
-                                                consequatur eligendi totam vitae iusto mollitia esse.”</p>
+                                            <p class="font-[400] text-xl italic text-blue-900">"Eu realmente não tinha experiência prévia em programação ou inteligência artificial, mas este curso foi incrível! As explicações foram claras e fáceis de entender, e os exemplos práticos foram muito úteis. Agora, sinto-me confiante para aplicar técnicas de IA em meus projetos de pesquisa e até mesmo em minha carreira. Recomendo este curso a todos, independentemente do nível de experiência."</p>
                                         </blockquote>
                                     </div>
 
                                     <div class="mt-8 flex items-center">
                                         <img class="h-11 w-11 flex-shrink-0 rounded-full object-cover"
-                                            src="https://componentland.com/images/y9s3xOJV6rnQPKIrdPYJy.png" alt="" />
+                                            src="/people/H002.webp" alt="" />
                                         <div class="ml-4">
-                                            <p class="text-base font-bold text-blue-900">Akorn Veesle</p>
-                                            <p class="mt-0.5 text-sm text-gray-500">CEO Lufthansa Corp</p>
+                                            <p class="text-base font-bold text-blue-900">Juan Borges</p>
+                                            <p class="mt-0.5 text-sm text-gray-500">Estudante Engenharia Civil</p>
                                         </div>
                                     </div>
                                 </div>
@@ -139,18 +137,16 @@
                                         </div>
 
                                         <blockquote class="mt-8 flex-1">
-                                            <p class="font-[400] text-xl italic text-blue-900">“Lorem ipsum dolor sit
-                                                amet consectetur adipisicing elit. Animi ducimus repellat aperiam quam
-                                                consequatur eligendi totam vitae iusto mollitia esse.”</p>
+                                            <p class="font-[400] text-xl italic text-blue-900">“Neste curso aprendemos como usar a IA em situações do mundo real, isso é ótimo pois devido o nosso tempo escasso conseguimos aumentar nossa produtividade.”</p>
                                         </blockquote>
                                     </div>
 
                                     <div class="mt-8 flex items-center">
                                         <img class="h-11 w-11 flex-shrink-0 rounded-full object-cover"
-                                            src="https://componentland.com/images/y9s3xOJV6rnQPKIrdPYJy.png" alt="" />
+                                            src="/people/M002.webp" alt="" />
                                         <div class="ml-4">
-                                            <p class="text-base font-bold text-blue-900">Akorn Veesle</p>
-                                            <p class="mt-0.5 text-sm text-gray-500">CEO Lufthansa Corp</p>
+                                            <p class="text-base font-bold text-blue-900">Paula Nunes</p>
+                                            <p class="mt-0.5 text-sm text-gray-500">Cordenandora Setor Finaceiro</p>
                                         </div>
                                     </div>
                                 </div>
@@ -187,18 +183,16 @@
                                         </div>
 
                                         <blockquote class="mt-8 flex-1">
-                                            <p class="font-[400] text-xl italic text-blue-900">“Lorem ipsum dolor sit
-                                                amet consectetur adipisicing elit. Animi ducimus repellat aperiam quam
-                                                consequatur eligendi totam vitae iusto mollitia esse.”</p>
+                                            <p class="font-[400] text-xl italic text-blue-900">“Eu não sabia que era possível trabalhar com IA mesmo sem ser programador, Este curso não apenas me deu as habilidades necessárias para trabalhar com inteligência artificial, mas também me ajudou a destacar-me no mercado de trabalho.”</p>
                                         </blockquote>
                                     </div>
 
                                     <div class="mt-8 flex items-center">
                                         <img class="h-11 w-11 flex-shrink-0 rounded-full object-cover"
-                                            src="https://componentland.com/images/y9s3xOJV6rnQPKIrdPYJy.png" alt="" />
+                                            src="/people/M001.webp" alt="" />
                                         <div class="ml-4">
-                                            <p class="text-base font-bold text-blue-900">Akorn Veesle</p>
-                                            <p class="mt-0.5 text-sm text-gray-500">CEO Lufthansa Corp</p>
+                                            <p class="text-base font-bold text-blue-900">Amanda Plens</p>
+                                            <p class="mt-0.5 text-sm text-gray-500">Assistente Fintech</p>
                                         </div>
                                     </div>
                                 </div>
