@@ -59,10 +59,12 @@ class AsaasDeletedCustomerJob implements ShouldQueue
                  // Retornar a resposta ou fazer qualquer outra coisa necessária
                  //dd($content);
 
-
+                 dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Excluído Cliente' . $content));
                  //return $content;
              } else {
                  // Se a requisição não for bem-sucedida, lançar uma exceção com o erro
+
+                 dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Falha: Excluir Cliente' . $response->status()));
                  throw new \Exception('Erro ao criar cliente Asaas: ' . $response->status());
              }
          } catch (\Exception $e) {

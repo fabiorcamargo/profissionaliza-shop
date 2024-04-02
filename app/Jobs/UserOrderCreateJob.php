@@ -115,6 +115,7 @@ class UserOrderCreateJob implements ShouldQueue
                 'access_token' => $this->token,
             ])->post($url . 'payments', $this->data);
 
+            
             // Verificar se a requisição foi bem-sucedida (código de status 2xx)
             if ($response->successful()) {
                 // Se for bem-sucedida, obter o conteúdo da resposta
@@ -125,17 +126,19 @@ class UserOrderCreateJob implements ShouldQueue
                 $this->userOrder->status = $content['status'];
                 $this->userOrder->save();
 
+                dispatch(new SendMsg(env('WPP_PHONE_ADM'), "Nova Ordem Valor: " . $this->userOrder->value));
 
             } else {
                 // Se a requisição não for bem-sucedida, lançar uma exceção com o erro
                 $this->userOrder->status = json_decode($response->body())->errors[0]->description;
                 $this->userOrder->save();
 
+                dispatch(new SendMsg(env('WPP_PHONE_ADM'), "Falha: Nova Ordem " . $this->userOrder->status));
                 throw new \Exception(json_decode($response->body())->errors[0]->description . $response->status());
             }
         } catch (\Exception $e) {
             // Tratar erros de requisição
-
+            dispatch(new SendMsg(env('WPP_PHONE_ADM'), "Falha: Nova Ordem " . $e->getMessage()));
             response()->json(['error' => $e->getMessage()], 500);
         }
     }

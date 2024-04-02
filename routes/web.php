@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\SendMsg;
 use App\Jobs\UserOrderCreateJob;
 use App\Mail\CadastroConfirmado;
 use App\Mail\TestEmail;
@@ -55,5 +56,13 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+    
+
+    Route::get('msg', function(){
+        $content = 'tyeste';
+        dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Excluído Cliente' . $content));
+    });
+
 
 require __DIR__.'/auth.php';

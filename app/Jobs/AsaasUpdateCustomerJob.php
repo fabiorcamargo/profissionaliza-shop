@@ -64,10 +64,12 @@ class AsaasUpdateCustomerJob implements ShouldQueue
                 // Retornar a resposta ou fazer qualquer outra coisa necessária
                 //dd($content);
 
-
+                dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Atualizado dados' . $content));
                 //return $content;
             } else {
                 // Se a requisição não for bem-sucedida, lançar uma exceção com o erro
+
+                dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Falha ao atualizar dados' . $response->status()));
                 throw new \Exception('Erro ao criar cliente Asaas: ' . $response->status());
             }
         } catch (\Exception $e) {

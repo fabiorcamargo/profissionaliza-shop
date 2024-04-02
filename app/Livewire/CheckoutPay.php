@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Http\Controllers\FBController;
 use App\Jobs\CheckPay;
 use App\Jobs\CheckPix;
+use App\Jobs\SendMsg;
 use App\Mail\PagamentoSucesso;
 use App\Models\Product;
 use App\Models\UserOrder;
@@ -165,6 +166,7 @@ class CheckoutPay extends Component
         //dd($this->order->user->email);
         if ($this->order->status == "CONFIRMED" || $this->order->status == "RECEIVED" || $this->order->status == "RECEIVED_IN_CASH") {
             Mail::to($this->order->user->email)->send(new PagamentoSucesso($this->order));
+            dispatch(new SendMsg(env('WPP_PHONE_ADM'), "Nova Ordem Valor: " . $this->order->value . " Recebida"));
             $this->statusPay = 2;
             session()->forget('cart');
             $this->dispatch('cartUp');

@@ -51,7 +51,7 @@ class CheckPay implements ShouldQueue
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'access_token' => $this->token,
-            ])->post($url . 'payments/'. $this->userOrder->payment_id);
+            ])->get($url . 'payments/'. $this->userOrder->payment_id);
 
             // Verificar se a requisição foi bem-sucedida (código de status 2xx)
             if ($response->successful()) {
