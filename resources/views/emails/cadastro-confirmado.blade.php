@@ -55,7 +55,7 @@
 <div class="container">
     <div class="header">
         <img src="Logo-new.png" alt="[Nome do Sistema]">
-        <h2>Confirmação de Pagamento</h2>
+        <h2>Cadastro Confirmado com Sucesso</h2>
     </div>
     <div class="content">
         <p>Prezado {{$user->name}},</p>
