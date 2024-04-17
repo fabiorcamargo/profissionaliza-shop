@@ -52,7 +52,7 @@
             id="mauticform_inscricaoprofissionalizashop" data-mautic-form="inscricaoprofissionalizashop"
             enctype="multipart/form-data">
             <div class="mauticform-error" id="mauticform_inscricaoprofissionalizashop_error"></div>
-            <div class="mauticform-message" id="mauticform_inscricaoprofissionalizashop_message"></div>
+
             <div class="mauticform-innerform">
               <div class="mauticform-page-wrapper mauticform-page-1" data-mautic-form-page="1">
                 <div id="mauticform_inscricaoprofissionalizashop_submit"
@@ -66,6 +66,8 @@
                         id="mauticform_input_inscricaoprofissionalizashop_email"
                         class="focus:outline mb-2 block h-14 w-full rounded-xl bg-gray-200 px-4 sm:w-80 focus:outline-none focus:ring-1 focus:ring-blue-600"
                         placeholder="Insira seu e-mail" />
+            <div class="mauticform-message bg-green-100 text-green-800 text-lg sm:w-80 font-medium me-2 px-2.5 py-0.5 my-2 rounded dark:bg-gray-700 dark:text-green-400 border" id="mauticform_inscricaoprofissionalizashop_message"></div>
+
                       <button
                         class="block rounded-xl bg-blue-600 px-6 py-3 font-medium text-white">Inscrever-se</button>
                     </div>
@@ -77,7 +79,10 @@
         <input type="hidden" name="mauticform[return]" id="mauticform_inscricaoprofissionalizashop_return" value="">
         <input type="hidden" name="mauticform[formName]" id="mauticform_inscricaoprofissionalizashop_name"
           value="inscricaoprofissionalizashop">
+
+          
         </form>
+
       </div>
     </div>
 
