@@ -1,8 +1,8 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
 
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
-            rel="stylesheet" />
+        {{-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
+            rel="stylesheet" /> --}}
         <!-- Seção 1: Introdução -->
 
         <section>
