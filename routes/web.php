@@ -25,7 +25,7 @@ Route::view('/', 'welcome');
 Route::view('ps/{id}', 'product-show');
 Route::view('checkout', 'checkout');
 
-Route::get('mail', function(){
+Route::get('mail', function () {
 
     $user = User::find(2);
 
@@ -42,7 +42,7 @@ Route::get('mail', function(){
     //Mail::to('fabiorcamargo@gmail.com')->send(new CadastroConfirmado());
 });
 
-Route::get('test', function(){
+Route::get('test', function () {
     $user = User::where('email', 'fabio.xina@gmail.com')->first();
     $order = UserOrder::find(1);
     dispatch(new UserOrderCreateJob($order));
@@ -57,12 +57,18 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-    
-
-    Route::get('msg', function(){
-        $content = 'tyeste';
-        dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Excluído Cliente' . $content));
-    });
 
 
-require __DIR__.'/auth.php';
+Route::get('msg', function () {
+    $content = 'tyeste';
+    dispatch(new SendMsg(env('WPP_PHONE_ADM'), 'Excluído Cliente' . $content));
+});
+
+Route::get('{name}', function ($name) {
+
+    return view('construct');
+
+});
+
+
+require __DIR__ . '/auth.php';

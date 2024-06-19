@@ -1,24 +1,4 @@
 <div>
-  <script type="text/javascript">
-    /** This section is only needed once per page if manually copying **/
-    if (typeof MauticSDKLoaded == 'undefined') {
-        var MauticSDKLoaded = true;
-        var head            = document.getElementsByTagName('head')[0];
-        var script          = document.createElement('script');
-        script.type         = 'text/javascript';
-        script.src          = 'https://prof.meusestudosead.com.br/media/js/mautic-form.js?v2e3743ff';
-        script.onload       = function() {
-            MauticSDK.onLoad();
-        };
-        head.appendChild(script);
-        var MauticDomain = 'https://prof.meusestudosead.com.br';
-        var MauticLang   = {
-            'submittingMessage': "Por favor, aguarde..."
-        }
-    }else if (typeof MauticSDK != 'undefined') {
-        MauticSDK.onLoad();
-    }
-  </script>
 
   <footer class="bg-gray-50">
     <div class="mx-auto grid max-w-screen-xl gap-y-8 gap-x-12 px-4 py-10 md:grid-cols-2 xl:grid-cols-4 xl:px-10">
