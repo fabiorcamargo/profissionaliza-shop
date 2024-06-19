@@ -27,20 +27,7 @@
                     <a class="text-gray-50" href="/">
                                 <img class="w-50" src="Logo-new.png" alt="">
                     </a>
-                    <div class="flex-1 relative hidden md:flex items-center justify-center">
-                        <ul class="mx-auto inline-flex gap-6 text-sm font-light">
-                            <li><a class="font-bold relative after:h-px after:content-[''] after:w-full after:absolute after:top-full after:bg-accent-500 after:left-0 after:translate-y-1"
-                                    href="">Accueil</a></li>
-                            <li><a href="">Qui sommes nous?</a></li>
-                            <li><a href="">Plan</a></li>
-                            <li><a href="">Mission</a></li>
-                        </ul>
-                        <ul class="absolute right-0">
-                            <li class="relative"><a
-                                    class=" h-10 rounded-lg flex items-center justify-center text-base bg-accent-500 leading-none px-12 uppercase"
-                                    href="">Contact</a></li>
-                        </ul>
-                    </div>
+                   
                 </nav>
             </div>
         </header>
