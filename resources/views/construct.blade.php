@@ -44,7 +44,7 @@
                             class="max-w-[30rem] font-light ml-4 before:content-[''] relative before:absolute before:w-px before:h-full before:left-0 before:top-0 before:-translate-x-4 before:bg-accent-500 md:text-base text-sm">
                             Em breve estará disponíveis todas as informações.</p>
                         <div class="md:flex-row flex-col flex gap-4">
-                            <a href="/"
+                            <a href="https://home.profissionalizaead.com.br"
                                 class="inline-block text-base font-medium px-12 py-2 bg-purple-400 rounded-lg cursor-pointer">Início</a>
                         </div>
                     </div>
