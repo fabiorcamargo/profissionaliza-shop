@@ -24,7 +24,7 @@
         <header class="w-dvw absolute top-0 left-1/2 -translate-x-1/2 z-[1000] py-4">
             <div class="max-w-[120rem] text-gray-50 px-6 md:px-8 lg:px-10">
                 <nav class="w-full flex flex-row items-center font-sans">
-                    <a class="text-gray-50" href="/">
+                    <a class="text-gray-50" href="https://home.profissionalizaead.com.br">
                                 <img class="w-50" src="Logo-new.png" alt="">
                     </a>
                    
